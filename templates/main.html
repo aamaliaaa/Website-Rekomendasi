@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mari Makan — Kuliner Sekitar Gunadarma Salemba</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Rasa<span>Rasa</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Mau makan di mana?</h1>
+  <p>Temukan tempat makan sekitar Kampus Gunadarma Salemba </p>
+
+  <div class="filter-panel">
+    <div class="filter-grid">
+      <div class="filter-group full">
+        <label class="field-label">Tipe Tempat</label>
+        <select id="filter-type">
+          <option value="indoor">Indoor</option>
+          <option value="outdoor">Outdoor</option>
+          <option value="both">Indoor & Outdoor</option>
+        </select>
+      </div>
+
+      <div class="filter-group full">
+        <label class="field-label">Rating</label>
+        <select id="filter-rating">
+          <option value="3">3+ bintang</option>
+          <option value="4">4+ bintang</option>
+          <option value="5">5 bintang</option>
+        </select>
+      </div>
+
+      <div class="filter-group full">
+        <label class="field-label"> Harga (Rp per orang)</label>
+        <div class="price-row">
+          <input type="text" id="filter-price-min" placeholder="10000" />
+          <input type="text" id="filter-price-max" placeholder="50000" />
+        </div>
+      </div>
+
+      <div class="filter-group full">
+        <label class="field-label">Fasilitas</label>
+        <div class="toggle-grid">
+          <label class="toggle-chip" id="chip-wifi">
+            <input type="checkbox" id="filter-wifi" />
+             Wi-Fi
+          </label>
+          <label class="toggle-chip" id="chip-ac">
+            <input type="checkbox" id="filter-ac" />
+             AC
+          </label>
+          <label class="toggle-chip" id="chip-musholla">
+            <input type="checkbox" id="filter-musholla" />
+             Musholla
+          </label>
+          <label class="toggle-chip" id="chip-parkir-motor">
+            <input type="checkbox" id="filter-parkir-motor" />
+             Parkir Motor
+          </label>
+          <label class="toggle-chip" id="chip-parkir-mobil">
+            <input type="checkbox" id="filter-parkir-mobil" />
+             Parkir Mobil
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="btn-reset" onclick="resetFilters()">Reset</button>
+      <button class="btn-search" onclick="applyFilters()"> Cari</button>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+  <div class="results-header">
+    <div class="results-count" id="results-count"></div>
+    <select class="sort-select" id="sort-select" onchange="applyFilters()">
+      <option value="name">Nama A–Z</option>
+      <option value="rating">Urutkan: Rating Tertinggi</option>
+      <option value="price-asc">Harga: Termurah</option>
+      <option value="price-desc">Harga: Termahal</option>
+    </select>
+  </div>
+
+  <div class="active-filters" id="active-filters"></div>
+  <div class="cards-grid" id="cards-grid"></div>
+</main>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
